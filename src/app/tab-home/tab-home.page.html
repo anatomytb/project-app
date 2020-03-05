@@ -1,0 +1,178 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-title style="font-size: 25px; color: #313131; font-weight: bold;">  HUAYVIP1688
+      <button style="float: right; font-weight: 500; font-size: 20px; background-color: transparent;  border: 3px #313131 solid;   border-radius: 5px;  padding-top:4px ;padding-bottom: 4px; ">
+       
+        <ion-icon name="home" style="float: left; margin-right: 3px;"> </ion-icon> 
+        หน้าหลัก
+      </button>
+    </ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content color="ligth">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+ <div >
+  <ion-img [src]="banner_data" style="width: 100% ; height: auto;"></ion-img>
+ </div>
+
+ <div style="margin-top: 10px;">
+  <div style="height: 28px;">
+    <button style="background-color: transparent;border: transparent; color:#181818; margin-left:10px ; font-size: 18px; padding-top: 5px; font-weight: 800;">หวยซอง สำนักดัง</button>
+    <button (click)="goto_tab1()" style="background-color: rgb(173, 0, 0); border-radius: 5px; color:white; float: right; font-size: 14px; padding: 5px; margin-right: 10px;box-shadow: 2px 2px 3px #333333; ">ดูทั้งหมด</button>
+  </div>
+  
+  
+  <ion-slides pager="true" [options]="slideOpts" *ngIf='data_baihuay' #mySlider class="slides" (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
+    <ion-slide *ngFor="let x of data_baihuay" style="text-align: center;">
+      <div class="btn-slide" (click)="goto_tab1()">
+
+        <ion-grid style="padding: 0px;">
+          <ion-row>
+            <ion-col size="6" style="padding: 10px; height: 10rem;">
+              <div style="background-color: white; height: 100%; border-radius: 20px;"  >
+                      <img src="{{x.bh_url}}" alt="" style="height: 100% ; width: auto; border-radius: 20px;"> 
+              </div>
+              
+            </ion-col>
+            <ion-col size="6" style="padding: 10px;">
+                <p style="text-align: left; margin: 5px 0px; font-size: 16px;font-weight: 600;">{{x.bh_name}}</p>
+                <p style="text-align: left; margin: 5px 0px; font-size: 12px;font-weight: 600;">{{x.bh_date | dateFormat}}</p>
+                <p style="text-align: left; margin: 5px 0px; font-size: 12px; font-weight: 500;">	&#160;&#160;&#160; {{x.bh_content}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+     
+
+
+      </div>
+    </ion-slide>
+   
+  </ion-slides>
+
+ </div>
+
+
+ <div style="margin-top: 10px;">
+  <div style="height: 28px;">
+    <button style="background-color: transparent;border: transparent; color:#181818 ; margin-left:10px ; font-size: 18px; padding-top: 5px;font-weight: 800;">ผลรางวัลงวดล่าสุด</button>
+    <button (click)="goto_tab4()" style="background-color: rgb(173, 0, 0); border-radius: 5px; color:white ; float: right; font-size: 14px; padding: 5px; margin-right: 10px;box-shadow: 2px 2px 3px #333333; ">ดูทั้งหมด</button>
+  </div>
+  
+  
+ 
+ 
+      <div class="div-news" *ngIf="data_stat">
+
+        <ion-grid style="padding: 0px;margin-top: 5px;">
+          <ion-row >
+            <ion-col size="12" style="border-radius: 5px; box-shadow: #181818 0px 2px 3px;margin-bottom: 10px; background-color: rgb(173, 0, 0); color: white;" >
+             งวดที่ : {{data_stat.sh_date | dateFormat}}
+               
+            </ion-col>
+            <ion-col size="12" style="font-size: 20px;border-radius: 5px; box-shadow: #181818 0px 2px 3px;margin-bottom: 10px;">
+              รางวัลที่ 1 <p style="margin: 0px;font-weight: 800; color: red;">{{data_stat.sh_num6}}</p>
+                
+             </ion-col>
+            <ion-col size="4" style="border-radius: 5px; box-shadow: #181818 0px 2px 3px;">
+              3ตัวหน้า <p style="margin: 0px;font-size: 18px;color: red;font-weight: 800;">{{data_stat.sh_num3f}} </p>
+            </ion-col>
+            <ion-col size="4" style="border-radius: 5px; box-shadow: #181818 0px 2px 3px;">
+              3ตัวท้าย <p style="margin: 0px;font-size: 18px;color: red;font-weight: 800;"> {{data_stat.sh_num3b}}</p>
+               
+            </ion-col>
+            <ion-col size="4" style="border-radius: 5px; box-shadow: #181818 0px 2px 3px;" >
+              เลขท้าย2ตัว <p style="margin: 0px;font-size: 18px;color: red;font-weight: 800;">{{data_stat.sh_num2}} </p> 
+               
+            </ion-col>
+          </ion-row>
+        
+
+        </ion-grid>
+     
+      </div>
+
+ </div>
+
+
+ <div style="margin-top: 15px;">
+  <div style="height: 28px;">
+    <button style="background-color: transparent;border: transparent; color:#181818 ; margin-left:10px ; font-size: 18px; padding-top: 5px;font-weight: 800;">ข่าวดัง หวยเด็ด</button>
+    <button (click)="goto_tab3()" style="background-color: rgb(173, 0, 0); border-radius: 5px; color:white ; float: right; font-size: 14px; padding: 5px; margin-right: 10px;box-shadow: 2px 2px 3px #333333; ">ดูทั้งหมด</button>
+  </div>
+  
+  
+ 
+ 
+      <div class="div-news" *ngIf="data_news">
+
+        <ion-grid style="padding: 0px;" (click)="goto_tab3()">
+          <ion-row *ngIf="data_news.length > 0">
+            <ion-col size="4" style="padding: 10px; height: 5rem;">
+              <div style="background-color: white; height: 100%; border-radius: 10px;"  >
+                      <img src="{{data_news[0].nh_img1}}" alt="" style="height: 100% ; width: auto; border-radius: 10px;"> 
+              </div>
+              
+            </ion-col>
+            <ion-col size="8" style="padding: 5px;">
+                <p style="text-align: left; margin: 5px 0px; font-size: 16px; font-weight: 500; white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">{{data_news[0].nh_name}}</p>
+                <p style="text-align: left; margin: 5px 0px; font-size: 12px;">โดย : {{data_news[0].nh_cr_name}}</p>
+                <p style="text-align: left; margin: 5px 0px; font-size: 12px;">เข้าดู : {{data_news[0].nh_view}} ครั้ง	</p>
+               
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="data_news.length > 1">
+            <ion-col size="4" style="padding: 10px; height: 5rem;">
+              <div style="background-color: white; height: 100%; border-radius: 10px;"  >
+                      <img src="{{data_news[1].nh_img1}}" alt="" style="height: 100% ; width: auto; border-radius: 10px;"> 
+              </div>
+              
+            </ion-col>
+            <ion-col size="8" style="padding: 5px;">
+                <p style="text-align: left; margin: 5px 0px; font-size: 16px; font-weight: 500; white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">{{data_news[1].nh_name}}</p>
+                <p style="text-align: left; margin: 5px 0px; font-size: 12px;">โดย : {{data_news[1].nh_cr_name}}</p>
+                <p style="text-align: left; margin: 5px 0px; font-size: 12px;">เข้าดู : {{data_news[1].nh_view}} ครั้ง	</p>
+               
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="data_news.length > 2">
+            <ion-col size="4" style="padding: 10px; height: 5rem;">
+              <div style="background-color: white; height: 100%; border-radius: 10px;"  >
+                      <img src="{{data_news[2].nh_img1}}" alt="" style="height: 100% ; width: auto; border-radius: 10px;"> 
+              </div>
+              
+            </ion-col>
+            <ion-col size="8" style="padding: 5px;">
+                <p style="text-align: left; margin: 5px 0px; font-size: 16px; font-weight: 500; white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;font-weight: 500;">{{data_news[2].nh_name}}</p>
+                <p style="text-align: left; margin: 5px 0px; font-size: 12px;">โดย : {{data_news[2].nh_cr_name}}</p>
+                <p style="text-align: left; margin: 5px 0px; font-size: 12px;">เข้าดู : {{data_news[2].nh_view}} ครั้ง	</p>
+               
+            </ion-col>
+          </ion-row>
+          
+        </ion-grid>
+     
+
+
+      </div>
+ 
+   
+
+
+ </div>
+
+
+
+
+
+
+ 
+
+
+
+</ion-content>

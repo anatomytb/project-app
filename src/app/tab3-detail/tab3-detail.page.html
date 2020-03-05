@@ -1,0 +1,39 @@
+<ion-content >
+  <div style="width: 100%;padding: 10px; height: 100%;">
+   
+     <div style="width: 100%; height: auto; box-shadow: rgb(82, 82, 82) 2px 2px 10px; border-radius: 10px;">
+      <ion-grid style="padding:0px 5px;" >
+        <ion-row   style="margin-bottom:10px ;">
+          <ion-col size="12" >  <ion-icon name="close-circle" style="float: right;   font-size: 40px;" (click)="goto_tab3()"></ion-icon> </ion-col>
+          <ion-col size="12" >
+            <p style="margin: 0px; float: left; font-size: 20px; font-weight: 500;">{{nh_name}}</p>
+            
+          </ion-col>
+          <ion-col size="12" >
+            <p style="float: left;margin: 0px;">ที่มา : <a href="{{nh_cr_link}}">{{nh_cr_name}}</a></p>
+            <p style="float: right;margin: 0px;">เข้าดูแล้ว {{nh_view}} ครั้ง</p>
+           
+          </ion-col>
+        
+          <ion-col size="12">
+            <img src="{{nh_img1}}" alt="" *ngIf="nh_img1">
+            
+            <p  *ngIf="nh_content1" >&nbsp;&nbsp;&nbsp;&nbsp;{{nh_content1}}</p>
+            <img src="{{nh_img2}}" alt=""  *ngIf="nh_img2">
+            <p *ngIf="nh_content2">&nbsp;&nbsp;&nbsp;&nbsp;{{nh_content2}}</p>
+            <img src="{{nh_img3}}" alt=""  *ngIf="nh_img3">
+            <p *ngIf="nh_content3">&nbsp;&nbsp;&nbsp;&nbsp;{{nh_content3}}</p>
+            <img src="{{nh_img4}}" alt=""  *ngIf="nh_img4">
+            <p *ngIf="nh_content4">&nbsp;&nbsp;&nbsp;&nbsp;{{nh_content4}}</p>
+          </ion-col>
+          <ion-col size="12" >
+            <p style="float: right; font-size: 12px; margin-right: 20px;">ลงวันที่ {{nh_date}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+     </div>
+  
+   </div>
+ </ion-content>
+
+ <!-- {{fn_date | dateFormat}} -->

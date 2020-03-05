@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-title style="font-size: 25px; color: #313131; font-weight: bold;">สถิติหวย
+      <button (click)="goto_tabhome()" style="float: right; font-weight: 500; font-size: 20px; background-color: transparent;  border: 3px #313131 solid;   border-radius: 5px;  padding-top:4px ;padding-bottom: 4px; ">
+       
+        <ion-icon name="home" style="float: left; margin-right: 3px;"> </ion-icon> 
+        หน้าหลัก
+      </button>
+    </ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div  style="padding-left: 0px;padding-right: 0px; padding-top: 10px;"  >
+    <ion-grid style="padding:0px 5px;" >
+      <ion-row style="text-align: center;">
+        <ion-col size="4">
+            <button class="btn-head" (click)="get_stat_huay()">สถิติ<br>ทั้งหมด</button>
+        </ion-col>
+        <ion-col size="4">
+          <button class="btn-head" (click)="get_stat_huay_by_month()">เดือน<br>{{month1}}</button>
+  
+        </ion-col>
+        <ion-col size="4">
+          <button  class="btn-head" (click)="get_stat_huay_by_month2()">เดือน<br>{{month2}}</button>
+  
+        </ion-col>
+      
+      </ion-row>
+    </ion-grid>
+    <ion-grid style="padding:0px 0px; margin-top: 5px;" *ngIf="stat_huay" >
+      <ion-row style="text-align: center; background-color: rgb(78, 78, 78); color: white; box-shadow: rgb(129, 129, 129) 0px 2px 3px; ">
+        <ion-col size="4">
+          วันที่
+        </ion-col>
+        <ion-col size="2" style="font-weight: 600;">  
+         รางวัลที่1
+        </ion-col>
+        <ion-col size="2">
+          3ตัวหน้า
+        </ion-col>
+        <ion-col size="2">
+         3ตัวท้าย
+  
+        </ion-col>
+        <ion-col size="2" style="font-weight: 600;">
+         
+          2ตัว
+        </ion-col>
+      
+      </ion-row>
+      <ion-row   style="text-align: center; " *ngFor="let x of stat_huay ;  let i = index" [ngClass]="(i % 2 == 0) ? 'col-odd' : 'col-even'" >
+        <ion-col size="4" >
+          {{x.sh_date | dateFormat}}  
+        </ion-col>
+        <ion-col size="2" style="font-weight: 600;">  
+          {{x.sh_num6}}
+        </ion-col>
+        <ion-col size="2">
+          {{x.sh_num3f}}
+        </ion-col>
+        <ion-col size="2">
+          {{x.sh_num3b}}
+  
+        </ion-col>
+        <ion-col size="2" style="font-weight:600 ;">
+          {{x.sh_num2}}
+        </ion-col>
+      
+      </ion-row>
+    </ion-grid>
+    
+  
+  </div>
+</ion-content>
+

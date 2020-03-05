@@ -1,0 +1,24 @@
+
+
+<ion-content >
+ <div style="width: 100%;padding: 10px; height: 100%;">
+  
+    <div style="width: 100%; height: auto; box-shadow: rgb(82, 82, 82) 2px 2px 10px; border-radius: 10px; padding-bottom: 10px;" >
+      <ion-grid>
+     <ion-row>
+      <ion-col size="12" >  <ion-icon name="close-circle" style="float: right;   font-size: 40px;" (click)="goto_tab1()"></ion-icon> </ion-col>
+       <ion-col size="12" style="text-align: center; font-size: 30px; background-color: rgb(173, 0, 0); box-shadow: rgb(173, 0, 0) 2px 2px 5px; color: white; border-radius:5px ;margin-bottom: 5px;">{{bh_name}}</ion-col>
+       <ion-col size="12" style=" text-align: center;font-size: 20px; color:rgb(173, 0, 0) ; box-shadow: rgb(173, 0, 0) 2px 2px 5px; border-radius: 5px;margin-bottom: 5px;"><ion-icon name="calendar" style="font-size: 25px; float: left;"></ion-icon> {{bh_date | dateFormat}}</ion-col>
+       <ion-col size="12">
+        <div style=" border-radius: 5px;overflow: scroll; overflow: scroll; height: auto;">
+          <img src="{{bh_url}}" alt="" style="border-radius: 5px; width: 100%;">
+          <p style="text-align: center; margin: 0px;"> รายละเอียด</p>
+         <p style="padding-left: 10px;margin-top: 5px;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  {{bh_content}}</p>
+        </div> 
+      </ion-col>
+     </ion-row>
+   </ion-grid>
+    </div>
+ 
+  </div>
+</ion-content>

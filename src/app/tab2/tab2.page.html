@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-title style="font-size: 25px; color: #313131; font-weight: bold;">  เลขเด็ด สำนักดัง
+      <button (click)="goto_tabhome()" style="float: right; font-weight: 500; font-size: 20px; background-color: transparent;  border: 3px #313131 solid;   border-radius: 5px;  padding-top:4px ;padding-bottom: 4px; ">
+       
+        <ion-icon name="home" style="float: left; margin-right: 3px;"> </ion-icon> 
+        หน้าหลัก
+      </button>
+    </ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div  style="padding-left: 0px;padding-right: 0px; padding-top: 10px;"  *ngIf="famous_number_data">
+    <div style="padding-left:10px ; padding-right: 10px; margin-bottom: 10px;" >
+      <ion-grid>
+        <ion-row>
+          <ion-col size="7"> <ion-input (keyup)="get_famous_number_by_name($event)" placeholder="ชื่อสำนัก"  style="box-shadow: #a7a7a7 2px 2px 5px; border-radius: 5px; height: 35px; width: 100%; "  > <ion-icon style="margin-left: 10px;margin-right: 10px; font-size: 20px; color: #727272 ;" name="search"></ion-icon> </ion-input></ion-col>
+          <ion-col size="5"> <ion-input (change)="get_famous_number_by_date($event)"  type="date" style="box-shadow: #a7a7a7 2px 2px 5px; border-radius: 5px;  color:#313131 ; height: 35px; " ><ion-icon name="calendar" style="margin-left: 10px;margin-right: 10px; font-size: 20px; color: #727272 ;"></ion-icon></ion-input></ion-col>
+        </ion-row>
+      </ion-grid>
+    
+    </div>
+    <p *ngIf="famous_number_data.length == 0" style="text-align: center; color: teal;">ไม่มีผลลัพธ์ <br>"โปรดใช้คีย์เวิร์ดอื่นในการค้นหา"</p>
+    <ion-grid style="padding:0px 5px;" >
+      <ion-row  *ngFor="let x of famous_number_data" style="margin-bottom:10px ;">
+        <ion-col size="12" class="fh-name">
+          <p style="margin: 0px; float: left;">{{x.fn_name}}</p>
+          <button class="btn-detail" (click)="goto_detail(x)"> รายละเอียด</button>
+        </ion-col>
+        <ion-col size="12" class="fh-date"> 
+          {{x.fn_date | dateFormat}}
+        </ion-col>
+        <ion-col size="6" class="fh-data">เด็ด <p style="white-space: nowrap;text-overflow: ellipsis;">{{x.fn_ded}}</p></ion-col>
+        <ion-col size="6" class="fh-data" >3ตัว <p style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">{{x.fn_top3}}</p></ion-col>
+        <ion-col size="12" class="fh-data">2ตัวบน <p style="color: rgb(51, 51, 51);">{{x.fn_top2}}</p></ion-col>
+        <ion-col size="12" class="fh-data">2ตัวล่าง <p style="color: rgb(51, 51, 51);">{{x.fn_bot2}}</p></ion-col>
+      </ion-row>
+    </ion-grid>
+   
+  </div>
+</ion-content>

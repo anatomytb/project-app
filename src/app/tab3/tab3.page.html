@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-title style="font-size: 25px; color: #313131; font-weight: bold;">ข่าวหวย
+      <button (click)="goto_tabhome()" style="float: right; font-weight: 500; font-size: 20px; background-color: transparent;  border: 3px #313131 solid;   border-radius: 5px;  padding-top:4px ;padding-bottom: 4px; ">
+       
+        <ion-icon name="home" style="float: left; margin-right: 3px;"> </ion-icon> 
+        หน้าหลัก
+      </button>
+    </ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div  style="padding-left: 0px;padding-right: 0px; padding-top: 10px;"  *ngIf="news_huay">
+ 
+    <div style="padding-left:10px ; padding-right: 10px; margin-bottom: 10px;" >
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12"> <ion-input (keyup)="get_news_by_name($event)"  placeholder="คีย์เวิร์ด"  style="box-shadow: #a7a7a7 2px 2px 5px; border-radius: 5px; height: 35px; width: 100%; "  > <ion-icon style="margin-left: 10px;margin-right: 10px; font-size: 20px; color: #727272 ;" name="search"></ion-icon> </ion-input></ion-col>
+        
+        </ion-row>
+      </ion-grid>
+    
+    </div>
+  
+    <p *ngIf="news_huay.length == 0" style="text-align: center; color: teal;">ไม่มีผลลัพธ์ <br>"โปรดใช้คีย์เวิร์ดอื่นในการค้นหา"</p>
+    <ion-grid style="padding:0px 5px;" >
+      <ion-row *ngFor="let x of news_huay" style="border-bottom: 1px rgb(90, 90, 90) solid;">
+        <ion-col size="4" style="padding: 10px; height: 6rem;">
+          <div style="background-color: white; height: 100%; border-radius: 10px;"  >
+                  <img src="{{x.nh_img1}}" alt="" style="height: 100% ; width: auto; border-radius: 10px;" (click)="goto_detail(x)"> 
+          </div>
+          
+        </ion-col>
+        <ion-col size="8" style="padding: 5px;">
+            <p style="text-align: left; margin: 5px 0px; font-size: 16px; font-weight: 500; white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;" (click)="goto_detail(x)">{{x.nh_name}}</p>
+            <p style="text-align: left; margin: 5px 0px; font-size: 13px;" >โดย :  <a href="{{x.nh_cr_link}}">{{x.nh_cr_name}}</a></p>
+            <p style="text-align: left; margin: 5px 0px; font-size: 12px;">เข้าดู : {{x.nh_view}} ครั้ง	</p>
+            <p style="text-align: left; margin: 5px 0px; font-size: 12px;">โพสต์เมื่อ : {{x.nh_date | dateFormat}}	</p>
+           
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+
+
+

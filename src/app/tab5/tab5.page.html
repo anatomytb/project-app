@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-title style="font-size: 25px; color: #313131; font-weight: bold;">ขูดเลข
+      <button (click)="goto_tabhome()" style="float: right; font-weight: 500; font-size: 20px; background-color: transparent;  border: 3px #313131 solid;   border-radius: 5px;  padding-top:4px ;padding-bottom: 4px; ">
+       
+        <ion-icon name="home" style="float: left; margin-right: 3px;"> </ion-icon> 
+        หน้าหลัก
+      </button>
+    </ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+ <div style="padding-left: 0px;padding-right: 0px;  height: 100%; margin: 0px; overflow: visible; "  *ngIf="image_lucky" >
+
+ <img src="https://www.huayvip1688.com/assets/img-lucky/{{image_lucky}}" alt="" style="width:100%; height: 100%;  position: absolute; z-index: 1;">
+ <img src="assets/img/hand.png"  (click)="random_num()"  class="hand" style=" transform: rotate(-50deg); width: 30rem; height: auto;  position: absolute;bottom: 0px; z-index: 3; left: -150px;">
+<p style="color: white;position: absolute;bottom: 0px; z-index: 3;font-size: 30px;right: 20px;">"แตะที่มือเพื่อเริ่ม"</p>
+<p class="num" style="color: brown; font-size: 30px; position: absolute;top: 5rem; z-index: 2;left: 60px;">{{r_num1}}</p>
+<p class="num" style="color: brown; font-size: 30px; position: absolute;top: 5rem; z-index: 2;right: 60px;">{{r_num2}}</p>
+<p class="num" style="color: brown; font-size: 30px; position: absolute;top: 15rem; z-index: 2;left: 150px;">{{r_num3}}</p>
+
+<div class="div-center"  *ngIf="r_num3 != null">
+  <p style="margin: 0;font-size: 25px;color: white;"> กรอกเลขที่ขูดได้<br> แล้วไปเทียบกับสำนักดัง</p>
+ <input type="text" style="background-color: white; border-radius: 5px; width: 80%; font-size: 50px;text-align: center;color: red;margin-top: 10px;"  (keyup)="input_number($event)" >
+<button  class="btn-goto" (click)="goto_detail()" >ค้นหา </button>
+
+</div>
+</div>
+</ion-content>

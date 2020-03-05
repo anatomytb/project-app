@@ -1,0 +1,36 @@
+<ion-content  style="background-color: black;">
+  <div style="width: 100%;padding: 10px; height: 100%; " >
+   
+     <div style="width: 100%; height: auto; box-shadow: rgb(82, 82, 82) 2px 2px 10px; border-radius: 10px; padding-bottom: 10px;">
+      <div  style="padding-left: 0px;padding-right: 0px; padding-top: 10px;"  *ngIf="famous_number_data">
+        
+        <ion-grid style="padding:0px 5px;" >
+          <ion-row>
+            <ion-col size="12" >  <ion-icon name="close-circle" style="float: right;   font-size: 40px;" (click)="goto_tab5()"></ion-icon> </ion-col>
+
+            <ion-col size="12" ><p style="margin: 0; font-size: 25px;text-align: center; ">สำนักดังที่ให้ตรงกับ "{{random_number}}" </p>  </ion-col>
+
+          </ion-row>
+        <p *ngIf="famous_number_data.length == 0" style="text-align: center; color: teal; width: 100%;">ไม่มีสำนักให้ตรงกับ<br>"{{random_number}}"</p>
+
+          <ion-row  *ngFor="let x of famous_number_data" style="margin-bottom:10px ;">
+
+            <ion-col size="12" class="fh-name">
+              <p style="margin: 0px; float: left;">{{x.fn_name}}</p>
+              <button class="btn-detail" (click)="goto_detail(x)"> รายละเอียด</button>
+            </ion-col>
+            <ion-col size="12" class="fh-date"> 
+              {{x.fn_date| dateFormat }}
+            </ion-col>
+            <ion-col size="6" class="fh-data">เด็ด <p style="white-space: nowrap;text-overflow: ellipsis;">{{x.fn_ded}}</p></ion-col>
+            <ion-col size="6" class="fh-data" >3ตัว <p style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">{{x.fn_top3}}</p></ion-col>
+            <ion-col size="12" class="fh-data">2ตัวบน <p style="color: rgb(51, 51, 51);">{{x.fn_top2}}</p></ion-col>
+            <ion-col size="12" class="fh-data">2ตัวล่าง <p style="color: rgb(51, 51, 51);">{{x.fn_bot2}}</p></ion-col>
+          </ion-row>
+        </ion-grid>
+       
+      </div>
+     </div>
+  
+   </div>
+ </ion-content>
