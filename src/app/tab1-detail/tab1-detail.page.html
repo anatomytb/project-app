@@ -13,7 +13,8 @@
         <div style=" border-radius: 5px;overflow: scroll; overflow: scroll; height: auto;">
           <img src="{{bh_url}}" alt="" style="border-radius: 5px; width: 100%;">
           <p style="text-align: center; margin: 0px;"> รายละเอียด</p>
-         <p style="padding-left: 10px;margin-top: 5px;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  {{bh_content}}</p>
+          <div [innerHTML]='bh_content'></div>
+        
         </div> 
       </ion-col>
      </ion-row>

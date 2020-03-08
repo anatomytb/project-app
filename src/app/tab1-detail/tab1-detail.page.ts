@@ -11,6 +11,8 @@ public bh_name ;
 public bh_url ;
 public bh_date ;
 public bh_content ;
+
+public inner_text = ' test <br> <h4>xxxxxxx</h4> ' ;
   constructor(private activatedRoute: ActivatedRoute , private router : Router) { }
 
   goto_tab1(){
